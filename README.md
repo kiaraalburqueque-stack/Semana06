@@ -66,8 +66,8 @@ refleja en el portal. También se conservan las pruebas de movies.
 
 ## Entrega
 
-Completa docs/ENTREGABLE.md con integrantes, capturas reales y resultados
-observados. docs/LAB05_REFERENCIA.md conserva el documento anterior.
+El informe se prepara en un documento Word independiente, fuera del repositorio.
+No se incluyen entregables académicos en el código.
 La base SQLite, medios, contraseñas y entorno virtual están excluidos de Git.
 El repositorio local aún no tiene remoto: crea un repositorio vacío Semana06
 en GitHub y conecta su URL antes de subirlo. Esta configuración es para uso local.
