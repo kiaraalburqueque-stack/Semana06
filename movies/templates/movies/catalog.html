@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peliculas | Laboratorio 05</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f5f6;color:#20242a;font:16px system-ui}header{background:#20242a;color:white;padding:22px 24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}header a{color:white}main{max-width:1000px;margin:auto;padding:28px 20px}h1{font-size:28px}form{display:flex;gap:8px;margin:24px 0}input{padding:12px;min-width:0;flex:1;border:1px solid #abb2ba;border-radius:4px}button,.action{background:#146b58;color:white;border:0;border-radius:4px;padding:12px;text-decoration:none;display:inline-block}article{border-bottom:1px solid #ccd2d8;padding:24px 0}img{width:100px;height:145px;object-fit:cover;float:left;margin:0 20px 12px 0}article:after{content:'';display:block;clear:both}h2{font-size:20px;margin:0 0 8px}p{line-height:1.6;margin:8px 0}.meta{color:#56616b}.score{color:#146b58;font-weight:700}
+</style>
+</head><body>
+<header><strong>Peliculas</strong><nav><a href="{% url 'movies:catalog' %}">Catalogo</a> &nbsp; <a href="/admin/">Administracion</a></nav></header>
+<main>
+{% if selected %}<h1>Recomendaciones para {{ selected.title }}</h1><p class="meta">Del mismo genero, ordenadas por valoracion.</p>
+{% else %}<h1>Catalogo de peliculas</h1><form method="get"><input type="search" name="q" value="{{ query }}" placeholder="Buscar pelicula" aria-label="Buscar pelicula"><button type="submit">Buscar</button></form>{% endif %}
+{% for movie in movies %}<article>
+{% if movie.poster %}<img src="{{ movie.poster.url }}" alt="Poster de {{ movie.title }}">{% endif %}
+<h2>{{ movie.title }}</h2><p class="meta">{{ movie.year }} &middot; {% for genre in movie.genres.all %}{{ genre.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p>{{ movie.synopsis }}</p><p class="score">{% if movie.average_score %}{{ movie.average_score|floatformat:1 }} / 5{% else %}Sin valoraciones{% endif %}</p>
+<a class="action" href="{% url 'movies:recommendations' movie.pk %}">Ver recomendaciones</a>
+</article>{% empty %}<p>No hay peliculas para mostrar.</p>{% endfor %}
+</main></body></html>
