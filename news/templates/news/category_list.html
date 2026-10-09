@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ category.name }} | Campus Noticias{% endblock %}
+{% block content %}
+<section class="page-heading"><a class="eyebrow" href="{% url 'news:home' %}">← VOLVER A LA PORTADA</a><h1>{{ category.name }}</h1><p>Las últimas historias de este tema.</p></section>
+<div class="article-grid">
+{% for article in articles %}
+  {% include 'news/_article_card.html' with article=article %}
+{% empty %}<p class="empty-state">No hay noticias publicadas en esta categoría.</p>{% endfor %}
+</div>
+{% endblock %}

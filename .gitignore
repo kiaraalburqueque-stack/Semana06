@@ -7,3 +7,5 @@ media/
 .env
 .credentials-local.txt
 .vscode/
+
+server-local*.log

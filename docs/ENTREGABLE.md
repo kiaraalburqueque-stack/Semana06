@@ -1,53 +1,75 @@
-# Laboratorio 05 - Administrador con Django
+# Laboratorio 06 — Motor de plantillas con Django
 
 ## Integrantes y responsabilidades
 
-Completar con los integrantes reales y el trabajo realizado.
-
 | Alumno | Desarrollo realizado |
 | --- | --- |
-| Pendiente | Pendiente |
+| Completar | Completar con el trabajo real |
+
+Repositorio del equipo: pendiente de crear/conectar en GitHub.
 
 ## Desarrollo y evidencias
 
-Para cada desarrollo registra: nombre del alumno, titulo, captura real del
-resultado, codigo relevante, explicacion y casos de prueba.
+Por cada evidencia agrega: nombre del alumno, título del desarrollo, captura real,
+código relevante, explicación del resultado y casos de prueba. Adjunta también
+una captura de la estructura del proyecto en VS Code.
 
-1. Modelos relacionados: adjuntar estructura del editor y migraciones.
-2. Registro inicial: capturar el panel con registro simple antes de personalizar.
-   Para reproducir esa etapa en una copia del proyecto, registrar los cuatro
-   modelos con `admin.site.register([Movie, Genre, Person, Rating])` sin las
-   clases ModelAdmin, capturar y volver a la version personalizada.
-3. Panel personalizado: capturar columnas, filtro por genero y anio, y busqueda.
-4. Formulario: capturar valoraciones en linea y campos de auditoria no editables.
-5. Datos: registrar carga manual desde el panel de diez peliculas, cuatro generos
-   y valoraciones para al menos cinco peliculas. El comando de ejemplo no
-   sustituye la evidencia de esta carga manual.
-6. Roles: capturar grupo editores, permisos y comparacion de ambas sesiones.
-7. Recomendaciones: capturar una pelicula y el resultado ordenado por promedio.
+| Evidencia | Archivos o acción que documentar | Captura |
+| --- | --- | --- |
+| Configuración | news en INSTALLED_APPS, TEMPLATES DIRS, STATIC_URL, MEDIA_URL, MEDIA_ROOT y config/urls.py | Pendiente |
+| Modelos y migración | Article, Category, Author; relaciones y campo ImageField | Pendiente |
+| Herencia | base.html y extends en las tres páginas; bloques title, content y sidebar | Pendiente |
+| Fragmento compartido | _article_card.html incluido en portada y categoría | Pendiente |
+| Variables, control y filtros | for, empty, if, date, truncatewords y length | Pendiente |
+| Portada | Seis noticias e imágenes visibles | Pendiente |
+| Detalle | Imagen, autor, contenido y categorías enlazadas | Pendiente |
+| Categoría | Solo noticias del tema seleccionado | Pendiente |
+| Estáticos y medios | CSS cargado e imagen servida correctamente | Pendiente |
+| Administrador | Columnas, búsqueda y filtros de las tres entidades | Pendiente |
+| Gestión de contenido | Crear/editar una noticia desde admin y comprobar el resultado público | Pendiente |
+| Escapado automático | Cuerpo con <strong>Noticia de prueba</strong> mostrado literalmente | Pendiente |
+| Repositorio | URL, estructura de plantillas, migraciones y observaciones | Pendiente |
+
+Los datos de seed_news facilitan la demostración; registra también el alta manual
+de noticias y categorías desde el administrador que solicita la guía.
 
 ## Casos de prueba manuales
 
 | Caso | Resultado esperado | Resultado observado / captura |
 | --- | --- | --- |
-| Buscar Interstellar | Solo titulos coincidentes | Pendiente |
-| Filtrar por genero y anio | Solo peliculas coincidentes | Pendiente |
-| Agregar valoracion como admin | Se guarda dentro de la pelicula | Pendiente |
-| Intentar puntuacion 6 | Error de validacion | Pendiente |
-| Cambiar auditoria | No existen entradas editables | Pendiente |
-| Entrar como editor | Puede agregar y cambiar peliculas | Pendiente |
-| Borrar como editor por URL | Acceso denegado (403) | Pendiente |
-| Abrir valoraciones como editor | Acceso denegado (403) | Pendiente |
-| Ver recomendaciones | Mismo genero, sin pelicula original, promedio descendente | Pendiente |
+| Abrir portada | Noticias publicadas, resúmenes recortados y fecha formateada | Pendiente |
+| Abrir noticia | Imagen, autor, categorías y cuerpo correspondientes | Pendiente |
+| Seleccionar categoría | Solo noticias relacionadas | Pendiente |
+| Categoría sin noticias | Mensaje de lista vacía | Pendiente |
+| Portada sin noticias publicadas | Mensaje de portada vacía | Pendiente |
+| Noticia sin imagen | Tarjeta con alternativa visual; detalle sin imagen rota | Pendiente |
+| Editar título y cuerpo en admin | Cambios visibles al recargar portada y detalle | Pendiente |
+| Cargar una imagen en admin | Se ve en tarjeta y detalle | Pendiente |
+| Buscar y filtrar noticias en admin | Registros coincidentes | Pendiente |
+| Guardar etiqueta HTML en cuerpo | Etiqueta visible como texto, sin ejecutarse | Pendiente |
+| Fecha de publicación futura | Noticia oculta en portada, categoría y detalle público | Pendiente |
+| Ruta de noticia inexistente | Respuesta 404 | Pendiente |
+| Ejecutar check y test | Sin errores de configuración; pruebas aprobadas | Pendiente |
 
 ## Observaciones
 
-El panel resuelve CRUD, filtros y permisos mediante configuracion de ModelAdmin.
-La recomendacion requiere una vista propia porque aplica una consulta especifica
-del negocio para visitantes. El rol editor limita operaciones por responsabilidad
-y evita conceder acceso total para tareas de mantenimiento del catalogo.
+El laboratorio 05 proporciona la base del proyecto y la práctica de Django Admin.
+El laboratorio 06 incorpora news para cumplir las entidades indicadas en la guía;
+movies se conserva en /cine/. No se reinicia ni se modifica la carpeta Semana5.
+
+La base reúne el marcado común; las páginas rellenan sus bloques. La tarjeta
+compartida evita duplicar el HTML de las noticias. Las vistas consultan el modelo
+y las plantillas presentan el resultado con variables, etiquetas y filtros.
+
+Los cambios en las noticias, autores y categorías se guardan desde el administrador
+y aparecen al recargar el portal, sin editar código. Las fechas futuras se filtran
+en la vista. El escapado automático convierte los caracteres especiales del HTML
+en texto visible; no se usa safe para mostrar el cuerpo.
+
+Las imágenes de ejemplo se generan con Pillow; los archivos multimedia no se
+versionan. Al clonar, las migraciones y seed_news reconstruyen la demostración.
 
 ## Conclusiones
 
-Redactar conclusiones personales despues de ejecutar las pruebas y adjuntar
-las evidencias. Incluir enlace del repositorio del equipo.
+Completar con conclusiones personales después de ejecutar los casos y adjuntar
+capturas. No se incluyen capturas ni resultados manuales inventados.

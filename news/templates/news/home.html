@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Portada | Campus Noticias{% endblock %}
+{% block content %}
+<section class="page-heading"><span class="eyebrow">LA ACTUALIDAD, MÁS CERCA</span><h1>Ideas, historias<br>y nuevos horizontes.</h1><p>Descubre lo que está pasando en nuestra comunidad.</p></section>
+<div class="section-heading"><h2>Últimas noticias</h2><span>{{ articles|length }} publicaciones</span></div>
+<div class="article-grid">
+{% for article in articles %}
+  {% include 'news/_article_card.html' with article=article %}
+{% empty %}<p class="empty-state">Todavía no hay noticias publicadas. Vuelve pronto.</p>{% endfor %}
+</div>
+{% endblock %}

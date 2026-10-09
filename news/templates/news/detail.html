@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ article.title }} | Campus Noticias{% endblock %}
+{% block content %}
+<article class="article-detail">
+  <a class="eyebrow" href="{% url 'news:home' %}">← VOLVER A LA PORTADA</a>
+  <div class="tags">{% for item in article.categories.all %}<a href="{% url 'news:category' item.slug %}">{{ item.name }}</a>{% endfor %}</div>
+  <h1>{{ article.title }}</h1>
+  <p class="lead">{{ article.summary }}</p>
+  <p class="meta">Por {{ article.author.name }} · {{ article.published_at|date:"d/m/Y H:i" }}</p>
+  {% if article.featured_image %}<img class="detail-image" src="{{ article.featured_image.url }}" alt="{{ article.title }}">{% endif %}
+  <div class="article-body">{{ article.body }}</div>
+  {% if article.author.biography %}<section class="author-box"><h2>Sobre {{ article.author.name }}</h2><p>{{ article.author.biography }}</p></section>{% endif %}
+</article>
+{% endblock %}
